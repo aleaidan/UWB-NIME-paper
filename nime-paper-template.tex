@@ -86,7 +86,7 @@
 \acmConference[NIME '27]{International Conference on New Interfaces for Musical Expression}{June 23--26,
   2027}{Paris, FR}
 %% This suppresses the ACM Reference Format printing.
-\settopmatter{printacmref=false}
+\settopmatter{printacmref=true}
 \acmISBN{}
 
 %%
@@ -168,10 +168,7 @@
 %% article.
 \begin{abstract}
 
- Within the ever expanding continuum of immersive sound and media installations, artists continually seek new technologies to expand their creative toolkits'. One technology that has remained underutilized in this immersive movement is Ultra-Wideband (UWB) sensing. This paper investigates the successful implementation of UWB sensors housed in custom wearables used for sound manipulation in a communal musical instrument, examining the technology's strengths and limitations while exploring potential future applications for UWB-powered musical interaction.....
-
- In this installation users are able to explore a projection mapped virtual environment that reacts to their standing position. This environment is rendered in Unreal engine and is projected on the floor. Encompassing the projection mapped are are 4 speakers playing a global soundscape, and on each UWB wearable there is a speaker which created a local soundscape for each user. .....
-
+\textit{Within the ever expanding continuum of immersive sound and media installations, artists continually seek new technologies to expand their creative toolkits. This paper presents VIRIDITAS, an interactive audiovisual installation in which up to four participants wear custom Ultra-Wideband (UWB) wearables that together form a communal musical instrument. UWB anchors at the corners of a floor-projected area track each wearer’s X/Y position. A single stream of position data, distributed over OSC, simultaneously drives a SuperCollider sound engine, which generates a quadraphonic ambient soundscape and a local soundscape on each wearable’s embedded speaker, as well as an Unreal Engine environment, which is projection-mapped onto the floor beneath the participants. Rather than reading position as a control signal for a single player, the system treats each person’s location, and their locations relative to one another, as expressive material.  In the following material, we will describe the system’s architecture, wearables, and mappings from position to sound and image, as well as discuss UWB’s strengths and limitations as an expressive interface, including [accuracy, latency, and body occlusion], along with directions for future work.}
 \end{abstract}
 
 %%
@@ -183,8 +180,8 @@
 %% information and the body of the document, and typically spans the
 %% page. Suggested dimensions: 1200x400px
 \begin{teaserfigure}
-  \includegraphics[width=\textwidth]{images/sampleteaser.png}
-  \caption{Entangled meshwork of colorful banana patch cables. Image by WikiProfPC (CC BY-SA 4.0)}
+  \includegraphics[width=\textwidth]{images/teaser.jpg}
+  \caption{Screenshot of virtual environment}
   \Description{Tangled banana patch cables}
   \label{fig:teaser}
 \end{teaserfigure}
@@ -196,36 +193,33 @@
 
 \section{Introduction}
 
-Since the dawn of time, humans have been immersed and interacted with. 
+When designing immersive installations featuring live responses to human interaction, one is likely to encounter a fundamental question to the deisgn process; how does a space know where its visitors are? Camera tracking through computer vision, depth sensors, and floor sensors have answered that question for decades in NIME and adjacent communities \cite{alshamraniCollaborativeSoundInstallation2026} \cite{frissonLoopJamTurningDance2012}, but each carries their own trade offs. 
+
+By using UWB wearables calculating time of flight from four UWB anchors placed on each corner of the virtual environment, we were able to extract useful data whil...
+
+This paper describes VIRIDITAS, a UWB-driven installation developed by M.E.A.T. [with support from Georgia Tech Arts and L42i]. Up to four participants wear custom devices that report their position within a floor-projected area, and host a small speaker. Their movements shape both a shared quadraphonic soundscape and a projected virtual landscape, while each wearable also plays a local layer of sound of its own. Because every participant is both a source of data and an emitter of sound, the instrument cannot be played by one person alone: its behavior emerges from where people stand and from how they move in relation to one another.
+
+VIRIDITAS is also a systems problem. Five or more programs run at once, passing position data between them in real time, and the design decisions about what each program owns shaped the work as much as any mapping did. We therefore present the installation as a whole, from sensing through sound and image to the physical layout, before turning to what UWB offers as an interface for expression.
 
 \section{Related Work}
 
 While this project utilized UWBs in this specific way, here are some related projects that utilized UWBs to achieve similar goals.. 
 
-\section{Technologies}
+\section{Concept and Experience}
 
-This project uses a modular platform architecture that relies on a central python script to provide a continuous stream of data. This data is packaged as a JSON string and distributed over OSC to the rest of the software over a local network. 
+"city in forest" , surveilenc commentary, etc
 
-\subsection{Project Architecture}
+\section{System Architecture}
+
+\subsection{UWB Tracking & Data Normalization}
 The project architecture consists of... 
 
-UWB -> Python -> Super Collider -> Wearable and Speakers
-              
-      
-UWB -> Python -> Unreal Engine -> Touch Designer -> Projectors
-
-
-\subsection{UWBs}
-
+\subsection{Audio Engine}
 UWB anchors are placed on 4 corners of the virtual environment and focus on triangulating the position of the active wearable when they enter.... 
 
-\subsection{Super Collider}
+\subsection{Visual Engine}
 
-\subsection{Unreal Engine}
-
-\subsection{Touch Designer}
-
-\section{Wearable}
+\section{Wearables}
 
 \subsection{Industrial Design}
 
@@ -233,16 +227,15 @@ UWB anchors are placed on 4 corners of the virtual environment and focus on tria
 
 \subsection{Fabrication}
 
+\section{Mapping and Interaction Design}
 
-
-
-\section{Activity Report}
+\section{Deployment and Observations}
 
 This installation was presented over a two week period at a gallery at The Georgia Institute of technology where we demonstrated two different methods of interaction with the UWB wearables.  During week 1 the position of the wearable in relation to the virtual environment affected the sounds they outputted. During week 2 the relative position between each UWB wearable changed the sound they outputted, encouraging users to get closer or further form one another to manipulate their local soundscape... To track the effectiveness and enjoyment of these levels of feedback we had users submit answer a short questionnaire and found that they preferred.... (not sure if the questionnaire we had guests fill out is admissible without IRB certification?) 
 
+\section{Discussion}
 
-
-\section{Conclusion}
+\section{Future Work and Conclusion}
 
 This paper presented a communal instrument that utilizes sound reactive UWB wearables as the primary means of detecting movement interaction within a virtual environment.... 
 
